@@ -28,7 +28,7 @@ featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema((
         atapi.StringField('Link',
                           required=False,
                           searchable=True,
-                          languageIndependent=True,
+                          languageIndependent=False,
                           storage=atapi.AnnotationStorage(),
                           widget=atapi.StringWidget(label=_(u'Linka'),
                                                     size=40,
