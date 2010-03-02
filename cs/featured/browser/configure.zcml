@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="cs.featured">
+
+    <include package="plone.app.contentmenu" />
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <browser:page
+      for="*"
+      name="featured_view"
+      class=".featuredview.featuredView"
+      template="featuredview.pt"
+      allowed_interface=".featuredview.IfeaturedView"
+      permission="zope.Public"
+    />
+
+
+</configure>
