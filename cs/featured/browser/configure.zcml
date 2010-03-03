@@ -16,5 +16,7 @@
       permission="zope.Public"
     />
 
+    <browser:templateOverrides directory="template-overrides-featured"
+                               layer=".interfaces.IThemeSpecific"/>
 
 </configure>
