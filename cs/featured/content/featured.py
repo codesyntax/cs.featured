@@ -26,7 +26,7 @@ featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema((
     # -*- Your Archetypes field definitions here ... -*-
 
         atapi.StringField('Link',
-                          required=False,
+                          required=True,
                           searchable=True,
                           languageIndependent=False,
                           storage=atapi.AnnotationStorage(),
