@@ -48,9 +48,6 @@ class Assignment(base.Assignment):
     # def __init__(self, some_field=u''):
     #    self.some_field = some_field
 
-    def __init__(self):
-        pass
-
     @property
     def title(self):
         """This property is used to give the title of the portlet in the
@@ -75,16 +72,22 @@ class Renderer(base.Renderer):
         self.portal_url = portal_state.portal_url()
 
     
-    def destakatuak(self):
-        #import pdb;pdb.set_trace()
-        context=aq_inner(self.context)
-        pcat=getToolByName(context,'portal_catalog')
-        return pcat(portal_type='featured')
+    def featured_items(self, count=None):
+        context = aq_inner(self.context)
+        pcat = getToolByName(context, 'portal_catalog')
+        if count is None:
+            items = pcat(portal_type='featured')
+        else:
+            items = pcat(portal_type='featured', 
+                         sort_on='sortable_title', 
+                         sort_limit=count)
+
+        return  [f.getObject() for f in items]
 
 # NOTE: If this portlet does not have any configurable parameters, you can
 # inherit from NullAddForm and remove the form_fields variable.
 
-class AddForm(base.AddForm):
+class AddForm(base.NullAddForm):
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells

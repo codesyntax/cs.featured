@@ -13,12 +13,9 @@
   <plone:portlet
       name="cs.featured.portlets.featuredportlet"
       interface=".featuredportlet.Ifeaturedportlet"
-      assignment=".featuredportlet.Assignment"
-      view_permission="zope2.View"
-      edit_permission="cmf.ManagePortal"
+      assignment=".featuredportlet.Assignment"      
       renderer=".featuredportlet.Renderer"
       addview=".featuredportlet.AddForm"
-      editview=".featuredportlet.EditForm"
       />
 
 
