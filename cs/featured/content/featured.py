@@ -1,25 +1,19 @@
 """Definition of the featured content type
 """
+from zope.interface import implements
 
-from zope.interface import implements, directlyProvides
 try:
     from Products.LinguaPlone import public as atapi
 except ImportError:
     from Products.Archetypes import atapi
 
 
-from Products.ATContentTypes.content import base
 from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.content import newsitem
-from Products.ATContentTypes.content import document
 
 from cs.featured import featuredMessageFactory as _
 from cs.featured.interfaces import Ifeatured
 from cs.featured.config import PROJECTNAME
-
-from Products.CMFCore.utils import getToolByName
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
 
 featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema((
 
