@@ -1,7 +1,8 @@
 Changelog
 =========
 
-0.1 (xxxx-xx-xx)
+0.8 (2012/10/17)
 ------------------
 
- - Created recipe with ZopeSkel [Plone Foundation].
+- Initial release
+  [erral]

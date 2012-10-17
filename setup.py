@@ -13,42 +13,22 @@ version = '0.8'
 long_description = (
     read('README.txt')
     + '\n' +
-    'Change history\n'
-    '**************\n'
-    + '\n' +
     read('CHANGES.txt')
-    + '\n' +
-    'Detailed Documentation\n'
-    '**********************\n'
-    + '\n' +
-    read('cs', 'featured', 'README.txt')
-    + '\n' +
-    'Contributors\n'
-    '************\n'
-    + '\n' +
-    read('CONTRIBUTORS.txt')
-    + '\n' +
-    'Download\n'
-    '********\n'
     )
-
-tests_require=['zope.testing']
 
 setup(name='cs.featured',
       version=version,
-      description="",
+      description="Content-type to reference external things: title + image + url",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        'Framework :: Plone',
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
+        "Framework :: Plone",
+        "Programming Language :: Python",
         ],
       keywords='',
-      author='Plone Foundation',
-      author_email='plone-developers@lists.sourceforge.net',
-      url='http://svn.plone.org/svn/plone/plone.example',
+      author='Mikel Larrategi',
+      author_email='mlarreategi@codesyntax.com',
+      url='http://code.codesyntax.com/private/cs.featured',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['cs', ],
@@ -57,16 +37,11 @@ setup(name='cs.featured',
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
                         ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite = 'cs.featured.tests.test_docs.test_suite',
-      entry_points="""
-      # -*- entry_points -*- 
-      [distutils.setup_keywords]
-      paster_plugins = setuptools.dist:assert_string_list
+      entry_points="""      
+      # -*- Entry points: -*-
 
-      [egg_info.writers]
-      paster_plugins.txt = setuptools.command.egg_info:write_arg
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
-      paster_plugins = ["ZopeSkel"],
+      
       )
