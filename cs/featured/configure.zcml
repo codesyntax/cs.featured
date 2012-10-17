@@ -15,7 +15,7 @@
       name="default"
       title="cs.featured"
       directory="profiles/default"
-      description=""
+      description="Feature external content in Plone"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
