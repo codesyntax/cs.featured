@@ -1,17 +1,7 @@
-.. contents::
+Introduction
+============
 
-.. Note!
-   -----
-   Update the following URLs to point to your:
+New content-type to reference external things. It has title, HTML description, image
+and a URL (external or internal).
 
-   - code repository
-   - bug tracker
-   - questions/comments feedback mail
-   (do not set a real mail, to avoid spams)
-
-   Or remove it if not used.
-
-- Code repository: http://svn.somewhere.com/...
-- Questions and comments to somemailing_list
-- Report bugs at http://bug.somewhere.com/..
-
+It's useful to use it in portlets or custom front-pages, because it easily manageable

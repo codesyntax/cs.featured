@@ -1,8 +1,15 @@
 Changelog
 =========
 
-0.1 - Unreleased
-----------------
+0.8 (2012/10/17)
+------------------
 
-* Initial release
+- Initial release
+  [erral]
+
+0.7 (?????????)
+------------------
+
+- Previous versions
+  [nruiz]
 

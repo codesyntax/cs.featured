@@ -21,16 +21,6 @@ class Ifeaturedportlet(IPortletDataProvider):
     same.
     """
 
-    # TODO: Add any zope.schema fields here to capture portlet configuration
-    # information. Alternatively, if there are no settings, leave this as an
-    # empty interface - see also notes around the add form and edit form
-    # below.
-
-    # some_field = schema.TextLine(title=_(u"Some field"),
-    #                              description=_(u"A field to use"),
-    #                              required=True)
-
-
 class Assignment(base.Assignment):
     """Portlet assignment.
 
@@ -39,14 +29,6 @@ class Assignment(base.Assignment):
     """
 
     implements(Ifeaturedportlet)
-
-    # TODO: Set default values for the configurable parameters here
-
-    # some_field = u""
-
-    # TODO: Add keyword parameters for configurable parameters here
-    # def __init__(self, some_field=u''):
-    #    self.some_field = some_field
 
     @property
     def title(self):
@@ -68,24 +50,22 @@ class Renderer(base.Renderer):
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request),
+                                        name=u'plone_portal_state')
         self.portal_url = portal_state.portal_url()
 
-    
     def featured_items(self, count=None):
         context = aq_inner(self.context)
         pcat = getToolByName(context, 'portal_catalog')
         if count is None:
             items = pcat(portal_type='featured')
         else:
-            items = pcat(portal_type='featured', 
-                         sort_on='sortable_title', 
+            items = pcat(portal_type='featured',
+                         sort_on='sortable_title',
                          sort_limit=count)
 
         return  [f.getObject() for f in items]
 
-# NOTE: If this portlet does not have any configurable parameters, you can
-# inherit from NullAddForm and remove the form_fields variable.
 
 class AddForm(base.NullAddForm):
     """Portlet add form.
@@ -94,20 +74,6 @@ class AddForm(base.NullAddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(Ifeaturedportlet)
 
-    def create(self, data):
-        return Assignment(**data)
-
-
-# NOTE: IF this portlet does not have any configurable parameters, you can
-# remove this class definition and delete the editview attribute from the
-# <plone:portlet /> registration in configure.zcml
-
-class EditForm(base.EditForm):
-    """Portlet edit form.
-
-    This is registered with configure.zcml. The form_fields variable tells
-    zope.formlib which fields to display.
-    """
-    form_fields = form.Fields(Ifeaturedportlet)
+    def create(self):
+        return Assignment()

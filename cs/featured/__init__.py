@@ -13,6 +13,7 @@ from Products.CMFCore import utils
 
 featuredMessageFactory = MessageFactory('cs.featured')
 
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
 
