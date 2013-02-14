@@ -1,0 +1,9 @@
+*.egg-info
+.egg-info.installed.cfg
+*.pt.py
+*.cpt.py
+*.zpt.py
+*.html.py
+*.egg
+.mr.developer.cfg
+.installed.cfg
