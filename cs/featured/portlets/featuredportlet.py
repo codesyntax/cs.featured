@@ -1,17 +1,14 @@
-from zope.interface import Interface
 from zope.interface import implements
-from Acquisition import aq_inner, aq_parent
+from Acquisition import aq_inner
 from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
 
-from zope import schema
-from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from cs.featured import featuredMessageFactory as _
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
 __ = MessageFactory("plone")
+
 
 class Ifeaturedportlet(IPortletDataProvider):
     """A portlet
@@ -20,6 +17,7 @@ class Ifeaturedportlet(IPortletDataProvider):
     data that is being rendered and the portlet assignment itself are the
     same.
     """
+
 
 class Assignment(base.Assignment):
     """Portlet assignment.
@@ -35,7 +33,7 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen.
         """
-        return __(u"Featured Portlet")
+        return __(u"CS Featured Portlet")
 
 
 class Renderer(base.Renderer):

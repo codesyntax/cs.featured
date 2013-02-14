@@ -13,11 +13,6 @@
             interface="..interfaces.Ifeatured"
             />
 
-        <require
-            permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.Ifeatured"
-            />
-
     </class>
 
 </configure>
