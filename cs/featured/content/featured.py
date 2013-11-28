@@ -35,7 +35,6 @@ featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema((
 featuredSchema['title'].storage = atapi.AnnotationStorage()
 featuredSchema['description'].storage = atapi.AnnotationStorage()
 
-featuredSchema.changeSchemataForField('description', 'categorization')
 featuredSchema.changeSchemataForField('imageCaption', 'categorization')
 
 schemata.finalizeATCTSchema(featuredSchema, moveDiscussion=False)
