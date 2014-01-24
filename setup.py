@@ -5,7 +5,7 @@ This module contains the tool of cs.featured
 import os
 from setuptools import setup, find_packages
 
-version = '1.1.1'
+version = '1.2'
 
 setup(name='cs.featured',
       version=version,
