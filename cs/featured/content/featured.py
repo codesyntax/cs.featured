@@ -10,44 +10,71 @@ except ImportError:
 
 from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.content import newsitem
-
+from plone.app.blob.field import ImageField
 from cs.featured import featuredMessageFactory as _
 from cs.featured.interfaces import Ifeatured
 from cs.featured.config import PROJECTNAME
 
-featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema((
-
-    # -*- Your Archetypes field definitions here ... -*-
-    atapi.StringField('Link',
-                      required=True,
-                      searchable=True,
-                      languageIndependent=False,
-                      storage=atapi.AnnotationStorage(),
-                      widget=atapi.StringWidget(label=_(u'Link'),
-                                                size=40,
-                                                ),
-                      ),
-))
+featuredSchema = newsitem.ATNewsItemSchema.copy() + atapi.Schema(
+    (
+        # -*- Your Archetypes field definitions here ... -*-
+        atapi.StringField(
+            "Link",
+            required=True,
+            searchable=True,
+            languageIndependent=False,
+            storage=atapi.AnnotationStorage(),
+            widget=atapi.StringWidget(label=_(u"Link"), size=40,),
+        ),
+        atapi.StringField(
+            "link_text",
+            required=True,
+            searchable=True,
+            languageIndependent=False,
+            storage=atapi.AnnotationStorage(),
+            widget=atapi.StringWidget(label=_(u"Link text"), size=100,),
+        ),
+        ImageField(
+            "mobile_image",
+            required=True,
+            storage=atapi.AnnotationStorage(migrate=True),
+            languageIndependent=True,
+            sizes={
+                "large": (768, 768),
+                "preview": (400, 400),
+                "mini": (200, 200),
+                "thumb": (128, 128),
+                "tile": (64, 64),
+                "icon": (32, 32),
+                "listing": (16, 16),
+            },
+            widget=atapi.ImageWidget(
+                label=_(u"mobile_image"), show_content_type=False,
+            ),
+        ),
+    )
+)
 
 # Set storage on fields copied from ATContentTypeSchema, making sure
 # they work well with the python bridge properties.
 
-featuredSchema['title'].storage = atapi.AnnotationStorage()
-featuredSchema['description'].storage = atapi.AnnotationStorage()
-
-featuredSchema.changeSchemataForField('imageCaption', 'categorization')
+featuredSchema["title"].storage = atapi.AnnotationStorage()
+featuredSchema["description"].storage = atapi.AnnotationStorage()
+featuredSchema.changeSchemataForField("imageCaption", "categorization")
 
 schemata.finalizeATCTSchema(featuredSchema, moveDiscussion=False)
 
 
 class featured(newsitem.ATNewsItem):
     """A Featured item is to reference external objects"""
+
     implements(Ifeatured)
 
     portal_type = "featured"
     schema = featuredSchema
 
-    title = atapi.ATFieldProperty('title')
-    description = atapi.ATFieldProperty('description')
+    title = atapi.ATFieldProperty("title")
+    description = atapi.ATFieldProperty("description")
+
 
 atapi.registerType(featured, PROJECTNAME)
